@@ -1,0 +1,8 @@
+psql -c "\copy leagues FROM 'leagues.csv' CSV HEADER"
+psql -c "\copy teams FROM 'teams.csv' CSV HEADER"
+psql -c "\copy players FROM 'players.csv' CSV HEADER"
+psql -c "\copy games FROM 'games.csv' CSV HEADER"
+psql -c "\copy players_stats_on_game FROM 'appearances.csv' CSV HEADER"
+psql -c "\copy team_stats_on_game FROM 'teamStats.csv' CSV HEADER"
+psql -c "\copy shot FROM 'shots.csv' CSV HEADER"
+psql -c "\copy plays_for FROM '.csv' CSV HEADER"

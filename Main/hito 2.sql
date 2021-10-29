@@ -4,7 +4,7 @@ createdb -O cc3201 cc3201
 exit
 psql
 CREATE SCHEMA <furbol>;
-ALTER USER cc3201 SET search_path TO <furbol>, public;
+ALTER USER cc3201 SET search_path TO furbol, public;
 
 
 CREATE TABLE leagues(
@@ -16,9 +16,7 @@ CREATE TABLE leagues(
 CREATE TABLE teams(
     id INT,
     name VARCHAR(255),
-    leagueId SMALLINT,
-    PRIMARY KEY(id),
-    FOREIGN KEY (leagueId) REFERENCES leagues(id)
+    PRIMARY KEY(id)
 );
 
 
@@ -31,13 +29,15 @@ CREATE TABLE players(
 
 CREATE TABLE games(
     id INT,
+    leagueId INT,
     season SMALLINT,
     date TIMESTAMP,
     homeGoals INT,
     awayGoals INT,
     homeGoalsHalfTime INT,
     awayGoalsHalfTime INT,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (leagueId) REFERENCES leagues(id)
 ); 
 
 CREATE TABLE players_stats_on_game(
@@ -80,17 +80,18 @@ CREATE TABLE team_stats_on_game(
 );
 
 CREATE TABLE shot(
+    shotId INT,
     playerId INT,
     assistsId INT,
     gameId INT,
+    minute INT,
+    positionX REAL,
+    positionY REAL,
     shotType VARCHAR(15),
     shotResult VARCHAR(15),
     lastAction VARCHAR(15),
-    positionX REAL,
-    positionY REAL,
-    sistuation VARCHAR(20),
-    minute INT,    
-    PRIMARY KEY (gameId, playerId, assistsId),
+    sistuation VARCHAR(20),    
+    PRIMARY KEY (shotId, gameId, playerId, assistsId),
     FOREIGN KEY (gameId) REFERENCES games(id),
     FOREIGN KEY (playerId) REFERENCES players(id),
     FOREIGN KEY (assistsId) REFERENCES players(id)
@@ -103,3 +104,5 @@ CREATE TABLE plays_for(
     FOREIGN KEY (playerId) REFERENCES players(id),
     FOREIGN KEY (teamId) REFERENCES teams(id)
 );
+
+--drop owned by cc3201 cascade; eliminar todo
