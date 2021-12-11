@@ -46,14 +46,19 @@
                            user=webuser;
                            password=garfield420');
            $nombre=$_GET['nombreMaldito'];
-           $stmt = $pdo->prepare('SELECT *
+           
+    
+            if ($nombre != NULL) {
+                $stmt = $pdo->prepare('SELECT *
                                   FROM jugadores_malditos
-                                  WHERE name=:nombreJugador');
-            if ($nombre != "") {
-                $stmt->execute(['nombreJugador' => $nombre]);
+                                  WHERE name=:nombre');
+
+                $stmt->execute([$nombre]);
             }
             else {
-                $stmt->execute(['nombreJugador' => 'Alexis Sanchez'])
+                $stmt = $pdo->prepare('SELECT *
+                                       FROM jugadores_malditos');
+                $stmt->execute();
             }
            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
