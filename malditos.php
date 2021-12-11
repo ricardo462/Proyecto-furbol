@@ -9,6 +9,8 @@
         echo "<tr>
                 <th>Header Columna 1(s)</th>
                 <th>Header Columna 2(s)</th>
+                <th>Header Columna 3(s)</th>
+                <th>Header Columna 4(s)</th>
               </tr>";
 
         class TableRows extends RecursiveIteratorIterator {
@@ -30,13 +32,13 @@
            $pdo = new PDO('pgsql:
                            host=localhost;
                            port=5432;
-                           dbname=webuser;
+                           dbname=cc3201;
                            user=webuser;
                            password=garfield420');
            $nombre=$_GET['nombreMaldito'];
            $stmt = $pdo->prepare('SELECT *
                                   FROM jugadores_malditos
-                                  WHERE atributo=:nombreJugador');
+                                  WHERE name=:nombreJugador');
            $stmt->execute(['nombreJugador' => $nombre]);
            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
