@@ -49,9 +49,10 @@
                            dbname=cc3201;
                            user=webuser;
                            password=garfield420');
+
            $posicion= $_GET['posicion'];
-           $nombre=$_GET['nombreMaldito'];
-           if($posicion == 'Arquero'){
+           $nombre=$_GET['nombreJugador'];
+           if($posicion == 'arquero'){
                  $stmt = $pdo->prepare('SELECT name, sum(time) as Tiempo_jugado, 
                                   sum(goals) as Goles, 
                                   sum(owngoals) as Autogoles, 
@@ -63,10 +64,10 @@
                                   
                                   FROM  d_stats
                                   WHERE position = "GK"
-                                  AND name =: nombreJugador 
+                                  AND name =:nombreJugador 
                                   GROUP BY name');
            }
-           elseif($posicion=='Mediocampo'){
+           elseif($posicion=='medioCampo'){
                $stmt = $pdo ->prepare('SELECT name, sum(time) as Tiempo_jugado, 
                                    sum(goals) as Goles, 
                                    sum(owngoals) as Autogoles, 
@@ -86,10 +87,10 @@
                                    OR position = "MC"
                                    OR position = "ML"
                                    OR position = "MR"
-                                   AND name =: nombreJugador
-                                   GROUP BY name;')
+                                   AND name =:nombreJugador
+                                   GROUP BY name');
            }
-           elseif($posicion=='Defensa'){
+           elseif($posicion=='defensa'){
                  $stmt = $pdo ->prepare('SELECT name, sum(time) as Tiempo_jugado, 
                                    sum(goals) as Goles, 
                                    sum(owngoals) as Autogoles,
@@ -102,10 +103,10 @@
                                    WHERE position = "DC"
                                    OR position = "DL"
                                    OR position = "DR"
-                                   AND name =: nombreJugador
-                                   GROUP BY name;')
+                                   AND name =:nombreJugador
+                                   GROUP BY name');
            }
-           elseif($posicion=='Delantero'){
+           elseif($posicion=='delantero'){
                  $stmt = $pdo ->prepare('SELECT name, sum(time) as Tiempo_jugado, 
                                    sum(goals) as Goles, 
                                    sum(owngoals) as Autogoles,
@@ -115,11 +116,11 @@
                                    sum(Tarjetas_amarillas) as Tarjetas_amarillas, 
                                    sum(Tarjetas_rojas) as Tarjetas_rojas
                                    FROM  d_stats
-                                   WHERE position = "FW"
-                                   OR position = "FWR"
-                                   OR position = "FWL"
-                                   AND name =: nombreJugador
-                                   GROUP BY name;')
+                                   WHERE name =:nombreJugador
+                                   AND (
+                                       position = "FW"
+                                   )
+                                   GROUP BY name');
            }
            else{
                $stmt = $pdo ->prepare('SELECT name, sum(time) as Tiempo_jugado, 
@@ -134,14 +135,14 @@
                                        WHERE position = "DC"
                                        OR position = "DL"
                                        OR position = "DR"
-                                       AND name =: nombreJugador
-                                       GROUP BY name;')
+                                       AND name =:nombreJugador
+                                       GROUP BY name');
            }
-            if ($nombre != "") {
+            if ($nombre != NULL) {
                 $stmt->execute(['nombreJugador' => $nombre]);
             }
             else {
-                $stmt->execute(['nombreJugador' => 'Claudio Bravo'])
+                $stmt->execute(['nombreJugador' => 'Claudio Bravo']);
             }
            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 

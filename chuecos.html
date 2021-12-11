@@ -12,7 +12,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aplicacion web para base de datos">
     <title style="padding: 50px">Proyecto Furbol</title>
 </head>
 
@@ -31,11 +30,11 @@
                     <p><strong>Alcance de la consulta</strong></p>
                     <label for="queryScope">Elige una opción: </label>
                     <select class="browser-default" id="queryScope">
-             <option value="league">Liga</option>
-             <option value="game">Partido</option>
-             <option value="team">Equipo</option>
-             <option value="player">Jugador</option>
-         </select>
+                        <option value="league">Liga</option>
+                        <option value="game">Partido</option>
+                        <option value="team">Equipo</option>
+                        <option value="player">Jugador</option>
+                    </select>
                     <br>
                     <p>
                         <strong> Rango de tiempo </strong> <small>(opcional)</small>
@@ -67,10 +66,9 @@
             <div class="card" id="content">
                 <form action="malditos.php" method="get">
                     <fieldset style="border: 0">
-                        <h5>El jugador mas maldito
-                        </h5>
+                        <h5>El jugador mas maldito</h5>
                         <label for "nombreMaldito">Nombre del jugador:</label>
-                        <input id="nombreMaldito" name="nombreMaldito">
+                        <input id="nombreMaldito" name="nombreMaldito" placeholder="Arturo Vidal">
                         <input class="btn waves-effect waves-light" type="submit"></button>
                     </fieldset>
                 </form>
