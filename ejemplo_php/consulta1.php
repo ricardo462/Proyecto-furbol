@@ -30,9 +30,9 @@
            $pdo = new PDO('pgsql:
                            host=localhost;
                            port=5432;
-                           dbname=cc3201;
-                           user=cc3201;
-                           password=contraseña');
+                           dbname=webuser;
+                           user=webuser;
+                           password=garfield420');
            $variable1=$_GET['input1'];
            $stmt = $pdo->prepare('SELECT *
                                   FROM tabla

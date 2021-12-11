@@ -72,7 +72,9 @@ ORDER BY redcard desc;
 --Consulta:
 SELECT * 
 FROM jugadores_malditos
-WHERE name LIKE '%Arturo%';
+WHERE name = 'Arturo Vidal';
+
+CREATE INDEX name_index ON players USING hash (name);
 
 
 -- jugador chueco

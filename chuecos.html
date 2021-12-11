@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -10,68 +12,72 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content ="Aplicacion web para base de datos">
+    <meta name="description" content="Aplicacion web para base de datos">
     <title style="padding: 50px">Proyecto Furbol</title>
 </head>
+
 <body style="background-color: #eceff1">
-  <div class="row">
-   <div class="col s2"></div>
-   <div class="col s8">
+    <div class="row">
+        <div class="col s2"></div>
+        <div class="col s8">
 
-    <div class="card" style="padding: 10px"> <h1 style="text-align: center">Salón de la infamia del Furbol</h1> </div>
+            <div class="card" style="padding: 10px">
+                <h1 style="text-align: center">Salón de la infamia del Furbol</h1>
+            </div>
 
-    <div class="card">
-     <fieldset style="border: 0">
-         <h5>Consultar sobre los mas chuecos</h5>
-         <p><strong>Alcance de la consulta</strong></p>
-         <label for="queryScope">Elige una opción: </label>
-         <select class="browser-default" id="queryScope">
+            <div class="card">
+                <fieldset style="border: 0">
+                    <h5>Consultar sobre los mas chuecos</h5>
+                    <p><strong>Alcance de la consulta</strong></p>
+                    <label for="queryScope">Elige una opción: </label>
+                    <select class="browser-default" id="queryScope">
              <option value="league">Liga</option>
              <option value="game">Partido</option>
              <option value="team">Equipo</option>
              <option value="player">Jugador</option>
          </select>
-         <br>
-         <p>
-             <strong> Rango de tiempo </strong> <small>(opcional)</small>
-         </p>
+                    <br>
+                    <p>
+                        <strong> Rango de tiempo </strong> <small>(opcional)</small>
+                    </p>
 
-         <input type="number" id="from" min="1990" max="2021" class="validate" placeholder="1990">
-         <label for="from">Desde</label>
+                    <input type="number" id="from" min="1990" max="2021" class="validate" placeholder="1990">
+                    <label for="from">Desde</label>
 
-         <br>
+                    <br>
 
-         <input type="number" id="until" min="1990" max="2021" class="validate" placeholder="2021" >
-         <label for="until">Hasta</label>
-         <br>
-         <br>
-         <p>
-             <strong>Buscar por nombre</strong> <small>(opcional)</small>
-         </p>
+                    <input type="number" id="until" min="1990" max="2021" class="validate" placeholder="2021">
+                    <label for="until">Hasta</label>
+                    <br>
+                    <br>
+                    <p>
+                        <strong>Buscar por nombre</strong> <small>(opcional)</small>
+                    </p>
 
 
-         <input placeholder="Arturo Vidal" id="nameQuery" type="text" class="validate">
-         <label for="nameQuery">Nombre del jugador</label>
+                    <input placeholder="Arturo Vidal" id="nameQuery" type="text" class="validate">
+                    <label for="nameQuery">Nombre del jugador</label>
 
-         <br>
-         <br>
-         <button class="btn waves-effect waves-light" type="submit" name="action">Consultar</button>
-     </fieldset>
+                    <br>
+                    <br>
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Consultar</button>
+                </fieldset>
+            </div>
+
+            <div class="card" id="content">
+                <form action="malditos.php" method="get">
+                    <fieldset style="border: 0">
+                        <h5>El jugador mas maldito
+                        </h5>
+                        <label for "nombreMaldito">Nombre del jugador:</label>
+                        <input id="nombreMaldito" name="nombreMaldito">
+                        <input class="btn waves-effect waves-light" type="submit"></button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class="col s2"></div>
     </div>
-
-    <div class="card">
-        <form action="malditos.php" method="get">
-            <fieldset style="border: 0">
-                <h5>El jugador mas maldito
-                </h5>
-                <label for "nombreMaldito">Nombre del jugador:</label>
-                <input id ="nombreMaldito" name="nombreMaldito">
-                <input class="btn waves-effect waves-light" type="submit" name="action"></button>
-            </fieldset>
-        </form>
-    </div>
-   </div>
-   <div class="col s2"></div>
- </div>
 </body>
+
 </html>
