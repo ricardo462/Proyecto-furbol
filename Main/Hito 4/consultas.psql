@@ -234,13 +234,17 @@ ORDER BY Goles desc;
 
 -- Vista para las estats por posición
 
-CREATE VIEW d_stats
+CREATE MATERIALIZED VIEW d_stats
 AS
 (SELECT name, position, sum(time) as time, sum(goals) as goals, sum(owngoals) as owngoals, sum(shots) as shots, sum(assists) as assists, sum(keypasses) as keypasses, sum(yellowcard) as Tarjetas_amarillas, sum(redcard) as Tarjetas_rojas
 FROM (SELECT * 
 FROM players_stats_on_game, players
 WHERE playerid = id) stats
-GROUP BY name, position)
+GROUP BY name, position);
+
+-- Hash index
+CREATE INDEX position_hash ON d_stats USING hash (position);
+
 
 
 --Filtrado de goles por posición
@@ -253,6 +257,9 @@ AND positiony < 1
 AND positiony > 0.6
 GROUP BY shotResult, lastaction, sistuation
 ORDER BY shotResult, lastaction, sistuation;
+
+-- Btree index
+CREATE INDEX positions_index ON shot (positionx, positiony);
 
 
 -- Con eso terminaríamos las consultas
