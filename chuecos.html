@@ -40,7 +40,7 @@
          <label for="from">Desde</label>
 
          <br>
-         
+
          <input type="number" id="until" min="1990" max="2021" class="validate" placeholder="2021" >
          <label for="until">Hasta</label>
          <br>
@@ -60,12 +60,15 @@
     </div>
 
     <div class="card">
-     <fieldset style="border: 0">
-         <h5>El jugador mas queso</h5>
-         <label for "nombreQueso">Nombre del jugador:</label>
-         <input id ="nombreQueso">
-         <button class="btn waves-effect waves-light" type="submit" name="action">Consultar</button>
-     </fieldset>
+        <form action="malditos.php" method="get">
+            <fieldset style="border: 0">
+                <h5>El jugador mas maldito
+                </h5>
+                <label for "nombreMaldito">Nombre del jugador:</label>
+                <input id ="nombreMaldito" name="nombreMaldito">
+                <input class="btn waves-effect waves-light" type="submit" name="action"></button>
+            </fieldset>
+        </form>
     </div>
    </div>
    <div class="col s2"></div>
