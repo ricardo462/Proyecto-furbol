@@ -19,6 +19,7 @@
         echo "<tr>
                 <th>Nombre del jugador</th>
                 <th>Tiempo jugado</th>
+                <th>Goles</th>
                 <th>Autogoles</th>
                 <th>Tiros</th>
                 <th>Asistencias</th>
@@ -142,7 +143,7 @@
                 $stmt->execute(['nombreJugador' => $nombre]);
             }
             else {
-                $stmt->execute(['nombreJugador' => 'Claudio Bravo']);
+                $stmt->execute(['nombreJugador' => 'Arturo Vidal']);
             }
            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
