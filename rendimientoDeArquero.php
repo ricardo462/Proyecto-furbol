@@ -133,9 +133,7 @@
                                        sum(Tarjetas_amarillas) as Tarjetas_amarillas, 
                                        sum(Tarjetas_rojas) as Tarjetas_rojas
                                        FROM  d_stats
-                                       WHERE (position = 'DC'
-                                       OR position = 'DL'
-                                       OR position = 'DR')
+                                       WHERE position = 'Sub'
                                        AND name =:nombreJugador
                                        GROUP BY name");
            }
