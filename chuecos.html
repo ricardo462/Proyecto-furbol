@@ -25,41 +25,29 @@
             </div>
 
             <div class="card">
-                <fieldset style="border: 0">
-                    <h5>Consultar sobre los mas chuecos</h5>
-                    <p>Aquí puedes consultar que tanto se fallan los tiros segun liga, equipo o jugador</p>
-                    <p><strong>Alcance de la consulta</strong></p>
-                    <label for="queryScope">Elige una opción: </label>
-                    <select class="browser-default" id="queryScope">
-                        <option value="league">Liga</option>
-                        <option value="team">Equipo</option>
-                        <option value="player">Jugador</option>
-                    </select>
-                    <br>
-                    <p>
-                        <strong> Rango de tiempo</strong> <small>(año)</small>
-                    </p>
-
-                    <input type="number" id="from" min="2014" max="2020" class="validate" placeholder="2014" required>
-                    <label for="from">Desde</label>
-                    <br>
-
-                    <input type="number" id="until" min="2014" max="2020" class="validate" placeholder="2020" required>
-                    <label for="until">Hasta</label>
-                    <br>
-                    <br>
-                    <p>
-                        <strong>Buscar por nombre</strong>
-                    </p>
-
-
-                    <input placeholder="Arturo Vidal" id="nameQuery" type="text" class="validate" required>
-                    <label for="nameQuery">Nombre del jugador</label>
-
-                    <br>
-                    <br>
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Consultar</button>
-                </fieldset>
+                <form action="chuecos.php" method="get">
+                    <fieldset style="border: 0">
+                        <h5>Consultar sobre los mas chuecos</h5>
+                        <p>Aquí puedes consultar que tanto se fallan los tiros segun liga, equipo o jugador</p>
+                        <p><strong>Alcance de la consulta</strong></p>
+                        <label for="queryScope">Elige una opción: </label>
+                        <select class="browser-default" id="queryScope" name="queryScope">
+                            <option value="league">Liga</option>
+                            <option value="team">Equipo</option>
+                            <option value="player">Jugador</option>
+                        </select>
+                        <br>
+                        <p><strong> Rango de tiempo</strong> <small>(año)</small></p>
+                        <input type="number" id="from" name="from" min="2014" max="2020" class="validate" placeholder="2014" required>
+                        <label for="from">Desde</label><br>
+                        <input type="number" id="until" name="until" min="2014" max="2020" class="validate" placeholder="2020" required>
+                        <label for="until">Hasta</label><br><br>
+                        <p><strong>Buscar por nombre</strong></p>
+                        <input placeholder="Arturo Vidal" id="nameQuery" name="nameQuery" type="text" class="validate">
+                        <label for="nameQuery">Nombre del jugador</label><br><br>
+                        <input class="btn waves-effect waves-light" type="submit"></button>
+                    </fieldset>
+                </form>
             </div>
 
             <div class="card" id="content">
