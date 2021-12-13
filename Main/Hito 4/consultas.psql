@@ -40,7 +40,7 @@ GROUP BY leagues.id;
 --juegos chuecos
 CREATE VIEW conversion_en_partidos
 AS
-SELECT games.id as gameid, games.leagueid, sum(suma_goles) as suma_goles, sum(suma_tiros) as suma_tiros, sum(suma_goles)/sum(suma_tiros) as indice
+SELECT season, games.id as gameid, games.leagueid, sum(suma_goles) as suma_goles, sum(suma_tiros) as suma_tiros, sum(suma_goles)/sum(suma_tiros) as indice
 FROM games,  (SELECT gameid, sum(goals) as suma_goles, sum(shots) as suma_tiros
 FROM team_stats_on_game
 GROUP BY gameid) goles_por_partido
@@ -267,3 +267,5 @@ CREATE INDEX positions_index ON shot (positionx, positiony);
 -- Con eso terminaríamos las consultas
 
 
+GRANT SELECT ON public.conversion_en_partidos TO webuser;
+CREATE INDEX season_index ON games (season);
