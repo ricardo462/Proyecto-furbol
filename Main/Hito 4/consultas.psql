@@ -34,6 +34,8 @@ LIMIT 5;
 SELECT name, sum(suma_goles) as suma_goles, sum(suma_tiros) as suma_tiros, sum(suma_goles)/sum(suma_tiros) as indice
 FROM  leagues, conversion_en_partidos
 WHERE leagues.id = conversion_en_partidos.leagueid
+AND season <2020
+AND season > 2018
 GROUP BY leagues.id;
 
 -- nota: hacer una vista que contenga la suma de los goles que sirva tanto para este apartado y el anterior.
@@ -41,13 +43,16 @@ GROUP BY leagues.id;
 CREATE VIEW conversion_en_partidos
 AS
 SELECT season, games.id as gameid, games.leagueid, sum(suma_goles) as suma_goles, sum(suma_tiros) as suma_tiros, sum(suma_goles)/sum(suma_tiros) as indice
-FROM games,  (SELECT gameid, sum(goals) as suma_goles, sum(shots) as suma_tiros
+FROM games, (SELECT gameid, sum(goals) as suma_goles, sum(shots) as suma_tiros
 FROM team_stats_on_game
 GROUP BY gameid) goles_por_partido
 WHERE games.id = goles_por_partido.gameid
 GROUP BY games.id;
 
-
+SELECT *
+FROM conversion_en_partidos
+WHERE season <2020
+AND season > 2018;
 
 ----- 07-12-21
 
@@ -79,21 +84,23 @@ CREATE INDEX name_index ON players USING hash (name);
 
 -- jugador chueco
 
-SELECT name, season, sum(goals), sum(shots)
+SELECT season, name, season, sum(goals), sum(shots)
 FROM players_stats_on_game, players, games
 WHERE playerid = players.id 
 AND gameid = games.id
-GROUP BY name, season
-LIMIT 10;
+AND season <2020
+AND season > 2018
+GROUP BY name, season;
 
 -- equipo chueco
 SELECT name, season, sum(goals) as goles, sum(shots) as tiros
 FROM team_stats_on_game, teams, games
 WHERE teamid = teams.id 
 AND gameid = games.id
+AND season <2020
+AND season > 2018
 GROUP BY name, season
-ORDER BY name
-LIMIT 10;
+ORDER BY name;
 
 -- \d+ games
 SELECT * 
