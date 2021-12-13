@@ -45,11 +45,11 @@
                            dbname=cc3201;
                            user=webuser;
                            password=garfield420');
-           $xInicial=$_GET['xInicial'];
-           $yInicial=$_GET['yInicial'];
-           $xFinal=$_GET['xFinal'];
-           $yFinal=$_GET['yFinal'];
-        
+            $xInicial=$_GET['xInicial'];
+            $yInicial=$_GET['yInicial'];
+            $xFinal=$_GET['xFinal'];
+            $yFinal=$_GET['yFinal'];
+            $dir = [$xFinal, $xInicial, $yFinal,  $yInicial];
            
     
             if ($xInicial != NULL) {
@@ -60,12 +60,8 @@
                 AND positiony < :yFinal
                 AND positiony > :yInicial
                 GROUP BY shotResult, lastaction, sistuation
-                ORDER BY shotResult, lastaction, sistuation
-                LIMIT 5');
-                $stmt->execute(['xInicial' => $xInicial]);
-                $stmt->execute(['yInicial' => $yInicial]);
-                $stmt->execute(['xFinal' => $xFinal]);
-                $stmt->execute(['yFinal' => $yFinal]);
+                ORDER BY shotResult, lastaction, sistuation');
+                $stmt->execute($dir);
             }
             else {
                 $stmt = $pdo->prepare('SELECT shotresult, lastaction, sistuation, count(*) as cuenta
