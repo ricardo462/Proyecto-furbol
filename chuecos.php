@@ -53,13 +53,13 @@
 
             if($name != NULL) {
                 if ($scope == "league") {
-                    $stmt = $pdo->prepare("SELECT name, sum(suma_goles) as suma_goles, sum(suma_tiros) as suma_tiros
+                    $stmt = $pdo->prepare("SELECT name, sum(suma_goles) as suma_goles, sum(suma_tiros) as suma_tiros, season
                         FROM  leagues, conversion_en_partidos
                         WHERE leagues.id = conversion_en_partidos.leagueid
                         AND season <=:until
                         AND season >=:since
                         AND name =:name
-                        GROUP BY leagues.id");
+                        GROUP BY leagues.id, season");
                     $stmt->execute([$until, $since, $name]);
                 }
                 elseif ($scope == "player") {
@@ -88,12 +88,12 @@
             }
             else {
                 if ($scope == "league") {
-                    $stmt = $pdo->prepare("SELECT name, sum(suma_goles) as suma_goles, sum(suma_tiros) as suma_tiros
+                    $stmt = $pdo->prepare("SELECT name, sum(suma_goles) as suma_goles, sum(suma_tiros) as suma_tiros, season
                         FROM  leagues, conversion_en_partidos
                         WHERE leagues.id = conversion_en_partidos.leagueid
                         AND season <=:until
                         AND season >=:since
-                        GROUP BY leagues.id");
+                        GROUP BY leagues.id, season");
                     $stmt->execute([$until, $since]);
                 }
                 elseif ($scope == "player") {
