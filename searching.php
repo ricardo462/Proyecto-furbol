@@ -18,9 +18,6 @@
         echo "<table>";
         echo "<tr>
                 <th>Nombre</th>
-                <th>Cantidad de tiros</th>
-                <th>Cantidad de goles</th>
-                <th>Temporada</th>
               </tr>";
 
         class TableRows extends RecursiveIteratorIterator {
