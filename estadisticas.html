@@ -24,9 +24,10 @@
             </header>
 
             <div class="card">
-                <form action="rendimientoDeArquero.php" method="get">
+                <form action="positionStats.php" method="get">
                     <fieldset style="border: 0">
                         <h5>Estadísticas según posición</h5>
+                        <p>Aquí puedes consultar las estadísticas de un jugador dependiendo de la posición jugada</p>
                         <label for="posicion">Elige una posición: </label>
                         <select class="browser-default" id="posicion" name="posicion">
                         <option value="arquero">Arquero</option>
@@ -35,7 +36,7 @@
                         <option value="delantero">Delantero</option>
                         <option value="suplente">Suplente</option>
                     </select>
-                        <input id="nombreJugador" name="nombreJugador" placeholder="Arturo Vidal">
+                        <input id="nombreJugador" name="nombreJugador" placeholder="Claudio Bravo" required>
                         <label for="nombreJugador">Nombre del jugador</label>
                         <br>
                         <br>
@@ -48,18 +49,22 @@
                 <form action="shotPositions.php" method="get">
                     <fieldset style="border: 0;">
                         <h5>Estadísticas de tiros</h5>
-                        <div class="s4">
-                            <input type="number" id="xInicial" name="xInicial" placeholder="Numero entre 0 y 1" min="0" max="1" step="any">
-                            <label for="xInicial">Posicion x inicial</label>
-                            <input type="number" id="xFinal" name="xFinal" placeholder="Numero entre 0 y 1" min="0" max="1" step="any">
-                            <label for="xFinal">Posicion x final</label>
-                            <input type="number" id="yInicial" name="yInicial" placeholder="Numero entre 0 y 1" min="0" max="1" step="any">
-                            <label for="yInicial">Posicion y inicial</label>
-                            <input type="number" id="yFinal" name="yFinal" placeholder="Numero entre 0 y 1" min="0" max="1" step="any">
-                            <label for="yFinal">Posicion y final</label>
-                            <br>
-                            <br>
-                            <input class="btn waves-effect waves-light" type="submit"></button>
+                        <p>Aquí podrás ver el resultado de los disparos hechos en un tramo de la cancha, por ejemplo, puedes ver los diferentes tiros dentro del 
+                            área rival con x = [0.8, 1] y = [0.2, 0.8]</p>
+                        
+                        <label for="xInicial">En la coordenada x, 0 es tu propio arco y 1 el arco rival</label>
+                        <input type="number" id="xInicial" name="xInicial" placeholder="0.25" min="0" max="1" step="any" required>
+                        <label for="xInicial">Posicion x inicial</label>
+                        <input type="number" id="xFinal" name="xFinal" placeholder="1" min="0" max="1" step="any" required>
+                        <label for="xFinal">Posicion x final</label><br><br><br>
+                        <label for="xInicial">En la coordenada y, 0 es lo mas bajo de la cancha y 1 lo mas arriba</label>
+                        <input type="number" id="yInicial" name="yInicial" placeholder="0.25" min="0" max="1" step="any" required>
+                        <label for="yInicial">Posicion y inicial</label>
+                        <input type="number" id="yFinal" name="yFinal" placeholder="0.75" min="0" max="1" step="any" required>
+                        <label for="yFinal">Posicion y final</label>
+                        <br>
+                        <br>
+                        <input class="btn waves-effect waves-light" type="submit"></button>
                     </fieldset>
                 </form>
                 </div>

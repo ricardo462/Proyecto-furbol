@@ -18,7 +18,7 @@
         echo "<table>";
         echo "<tr>
                 <th>Nombre del jugador</th>
-                <th>Tiempo jugado</th>
+                <th>Tiempo jugado (min)</th>
                 <th>Goles</th>
                 <th>Autogoles</th>
                 <th>Tiros</th>

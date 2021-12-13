@@ -27,34 +27,33 @@
             <div class="card">
                 <fieldset style="border: 0">
                     <h5>Consultar sobre los mas chuecos</h5>
+                    <p>Aquí puedes consultar que tanto se fallan los tiros segun liga, equipo o jugador</p>
                     <p><strong>Alcance de la consulta</strong></p>
                     <label for="queryScope">Elige una opción: </label>
                     <select class="browser-default" id="queryScope">
                         <option value="league">Liga</option>
-                        <option value="game">Partido</option>
                         <option value="team">Equipo</option>
                         <option value="player">Jugador</option>
                     </select>
                     <br>
                     <p>
-                        <strong> Rango de tiempo </strong> <small>(opcional)</small>
+                        <strong> Rango de tiempo</strong> <small>(año)</small>
                     </p>
 
-                    <input type="number" id="from" min="1990" max="2021" class="validate" placeholder="1990">
+                    <input type="number" id="from" min="2014" max="2020" class="validate" placeholder="2014" required>
                     <label for="from">Desde</label>
-
                     <br>
 
-                    <input type="number" id="until" min="1990" max="2021" class="validate" placeholder="2021">
+                    <input type="number" id="until" min="2014" max="2020" class="validate" placeholder="2020" required>
                     <label for="until">Hasta</label>
                     <br>
                     <br>
                     <p>
-                        <strong>Buscar por nombre</strong> <small>(opcional)</small>
+                        <strong>Buscar por nombre</strong>
                     </p>
 
 
-                    <input placeholder="Arturo Vidal" id="nameQuery" type="text" class="validate">
+                    <input placeholder="Arturo Vidal" id="nameQuery" type="text" class="validate" required>
                     <label for="nameQuery">Nombre del jugador</label>
 
                     <br>
@@ -67,8 +66,9 @@
                 <form action="malditos.php" method="get">
                     <fieldset style="border: 0">
                         <h5>El jugador mas maldito</h5>
-                        <label for "nombreMaldito">Nombre del jugador:</label>
+                        <p>Aquí puedes ver las peores estadísticas de un jugador</p>
                         <input id="nombreMaldito" name="nombreMaldito" placeholder="Arturo Vidal">
+                        <label for "nombreMaldito">Nombre del jugador <small>(opcional)</label><br><br>
                         <input class="btn waves-effect waves-light" type="submit"></button>
                     </fieldset>
                 </form>
